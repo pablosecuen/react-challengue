@@ -1,0 +1,21 @@
+.detail-navbar {
+  width: 100svw;
+}
+
+.detail-container {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.detail-container h5 {
+  color: var(--Dark, #323232);
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}

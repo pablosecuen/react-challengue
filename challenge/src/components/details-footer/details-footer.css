@@ -1,0 +1,32 @@
+.details-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 90%;
+  margin: 50px auto;
+}
+
+.cart-icon {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  border: 0.8px solid var(--Primary-Color, #ff9f24);
+  background-color: white !important;
+}
+
+.cart-button {
+  width: 247px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--Primary-Color, #ff9f24);
+  color: #fff;
+  text-align: center;
+  font-family: "DM Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  border: none;
+}

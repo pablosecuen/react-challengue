@@ -1,0 +1,42 @@
+.navbar {
+  width: 100%;
+  max-width: 100vw;
+  height: 50px;
+  margin: 30px 0px 30px 0px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.userIcon img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  width: 35px;
+  height: auto;
+  border-radius: 100%;
+}
+
+.menuIcon {
+  background-color: white;
+  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuIcon svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin: auto auto;
+}

@@ -1,0 +1,29 @@
+.displaycontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 60px;
+  align-items: center;
+  justify-content: start;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.displaycontainer > :first-child {
+  color: #646464;
+  font-family: "DM Sans";
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  margin-right: auto;
+}
+
+.displaycontainer > :nth-child(2) {
+  color: #323232;
+  font-family: "DM Sans";
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  margin-right: auto;
+}
