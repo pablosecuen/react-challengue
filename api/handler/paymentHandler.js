@@ -1,5 +1,5 @@
 // handlers.js
-import { createPreference, webHookController } from "../controller/paymentController";
+const { createPreference, webHookController } = require("../controller/paymentController");
 
 export const createPreferenceHandler = async (req, res) => {
   try {
