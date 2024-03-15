@@ -1,16 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-#root {
-  width: 100vw;
-  min-height: 100vh;
-  margin: 0 !important;
+/* #root {
+  width: 99svw;
+  min-height: 100svh;
+  margin: -1 !important;
   text-align: center;
   padding: 0;
   background-color: #fafafa;
-}
+} */
 
 body {
   margin: 0;
   padding: 0;
   font-family: "DM Sans", sans-serif;
+}
+
+.appcontainer {
+  max-width: 100svw;
+  margin: 0;
+  padding: 0;
 }

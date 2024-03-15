@@ -1,19 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCart } from "../../../provider/CartContext";
 import ShopCart from "../modal/shop-cart";
 import "./detailnav.css";
 const DetailNav = () => {
-  const [cart] = useState(() => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+  const { cart } = useCart();
   const handleGoBack = () => {
     window.history.back();
   };
-
-  useEffect(() => {
-    // Actualizar el localStorage cada vez que el estado del carrito cambie
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
 
   return (
     <nav className="detail-navbar">

@@ -1,9 +1,22 @@
+import { useUser } from "@clerk/clerk-react";
 import "./userdisplay.css";
 const UserDisplay = () => {
+  const { isSignedIn, user, isLoaded } = useUser();
+
+  if (!isLoaded) {
+    return null;
+  }
+
   return (
     <div className="displaycontainer">
-      <p>Hi Mr. Michael,</p>
-      <p>Welcome Back!</p>
+      {isSignedIn ? (
+        <>
+          <p> Hi {user.fullName}</p>
+          <p>Welcome Back!</p>{" "}
+        </>
+      ) : (
+        <p>Hi there, please login!</p>
+      )}
     </div>
   );
 };

@@ -1,37 +1,18 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import "./details-footer.css";
+import { useCart } from "../../../provider/CartContext";
 const DetailsFooter = ({ selectedProduct }) => {
-  const [cart, setCart] = useState(() => {
-    const storedCart = localStorage.getItem("cart");
-    return storedCart ? JSON.parse(storedCart) : [];
-  });
+  const { addToCart } = useCart();
 
-  const addToCart = () => {
-    const existingProductIndex = cart.findIndex(
-      (item) => item.skus.code === selectedProduct.skus.code
-    );
-
-    if (existingProductIndex !== -1) {
-      const updatedCart = cart.map((item, index) => {
-        if (index === existingProductIndex) {
-          return { ...item, quantity: item.quantity + 1 };
-        }
-        return item;
-      });
-      setCart(updatedCart);
-      toast.success("Quantity updated in cart");
-    } else {
-      const updatedProduct = { ...selectedProduct, quantity: 1 };
-      setCart([...cart, updatedProduct]);
-      toast.success("Item added successfully to cart");
+  const handleAddToCart = () => {
+    if (!selectedProduct) {
+      toast.error("Select an item first");
+      return;
     }
-  };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    addToCart(selectedProduct);
+  };
 
   return (
     <div className="details-footer">
@@ -54,7 +35,7 @@ const DetailsFooter = ({ selectedProduct }) => {
           <circle cx="13.75" cy="10.75" r="0.75" fill="#FF9F24" />
         </svg>
       </button>
-      <button className="cart-button" onClick={addToCart}>
+      <button className="cart-button" onClick={handleAddToCart}>
         Add to cart
       </button>
     </div>

@@ -111,3 +111,8 @@ a {
   background: #ff9f24;
   border: none;
 }
+
+.card-footer svg:hover {
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}

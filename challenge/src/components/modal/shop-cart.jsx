@@ -1,15 +1,39 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import "./shopcart.css";
+import { useEffect, useRef, useState } from "react";
+import EditItemQuantityButton from "../button/edit-quantity-button";
 
-const ShopCart = ({ cart }) => {
+import "./shopcart.css";
+import { useCart } from "../../../provider/CartContext";
+
+const ShopCart = () => {
+  const cartRef = useRef(null);
+  const { cart, removeFromCart, totalCost } = useCart();
   const [isCartOpen, setIsCartOpen] = useState(false);
+
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen);
   };
 
+  const handleRemoveFromCart = (productsku) => {
+    removeFromCart(productsku);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (cartRef.current && !cartRef.current.contains(event.target)) {
+        setIsCartOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [cartRef]);
+
   return (
-    <div>
+    <div ref={cartRef}>
       <span id="cart" className="shop-cart" onClick={toggleCart}>
         <svg
           fill="#969696"
@@ -35,13 +59,52 @@ const ShopCart = ({ cart }) => {
       </span>
       <button id="shop-list" className={`shop-list ${isCartOpen ? "animate" : ""}`}>
         <ul className="shop-ul">
-          <h2>Shopping list</h2>
-          {cart.map((item, index) => (
-            <li key={index}>
-              <span className="title">{item.name}</span>
-              <span className="price">{item.price}</span>
-            </li>
-          ))}
+          {cart?.map((item, i) => {
+            return (
+              <li key={i} className=" li-cart">
+                <div className=" card-cart">
+                  <div className=" close-but">
+                    <span onClick={() => handleRemoveFromCart(item.skus.code)}>x</span>
+                  </div>
+                  <a
+                    href={`/${item?.id}-${item?.brand?.replace(/\s+/g, "-")}`}
+                    onClick={toggleCart}
+                    className="link-card"
+                  >
+                    <div className="img-card-cont">
+                      <img alt={item?.brand} src={item?.image} />
+                    </div>
+
+                    <div className="sku-cont">
+                      <span>{item.brand}</span>
+                      <span>Medida: {item?.skus?.name}</span>
+                    </div>
+                  </a>
+                  <div className="price-section">
+                    <div className="price-text">${item?.skus?.price}</div>
+                    <div className="quantity-container">
+                      <EditItemQuantityButton item={item} type="minus" />
+                      <p className="">
+                        <span className="">{item?.quantity}</span>
+                      </p>
+                      <EditItemQuantityButton item={item} type="plus" />
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+
+          <div className=" shop-cart-footer">
+            <div className="total-cost">
+              <p>Total</p>
+
+              <div className="tracking-widest">${totalCost.toFixed(2)}</div>
+            </div>
+            <a href="/checkout" className="checkout">
+              Checkout
+            </a>
+          </div>
         </ul>
       </button>
     </div>

@@ -1,6 +1,15 @@
+.product-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+
 .product-container img {
   width: auto;
   height: 240px;
+  margin: 0 auto;
   mix-blend-mode: darken;
 }
 
