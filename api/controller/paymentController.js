@@ -76,7 +76,7 @@ const webHookController = async (req, res) => {
   try {
     //example on how to save tickets from payement gateway server in our own relational db.
 
-    const paymentId = req.body?.data?.id;
+    /*   const paymentId = req.body?.data?.id;
     const response = await axios.get(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
       headers: {
         Authorization: `Bearer ${process.env.MERCADOPAGO_ACCESS_TOKEN}`,
@@ -85,16 +85,15 @@ const webHookController = async (req, res) => {
 
     const paymentData = {
       paymentId: paymentId,
-      dateCreated: response.data.date_created,
-      items: response.data.additional_info.items,
-      status: response.data.status,
-      payer: response.data.payer,
-      shipments: response.data.shipments,
-      transaction_amount: response.data.transaction_amount,
-    };
-    return paymentData;
+      dateCreated: response?.data?.date_created,
+      items: response?.data?.additional_info?.items,
+      status: response?.data?.status,
+      payer: response?.data?.payer,
+      shipments: response?.data?.shipments,
+      transaction_amount: response?.data?.transaction_amount,
+    }; */
 
-    res.status(200).json("webhook recieved successfully", paymentData);
+    res.status(200).json("webhook recieved successfully");
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
