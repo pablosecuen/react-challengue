@@ -34,6 +34,16 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
+  /*   const createPreferenceAsync = async (body) => {
+    try {
+      const response = await axiosInstance.post(`/api/payments/create-preference`, body);
+      setPreferenceId(response.data);
+    } catch (error) {
+      console.error("Error creating preference:", error);
+      throw error;
+    }
+  }; */
+
   return (
     <ProductContext.Provider value={{ fetchProductData, products: productData }}>
       {children}

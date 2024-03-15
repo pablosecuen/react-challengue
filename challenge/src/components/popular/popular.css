@@ -45,14 +45,18 @@ a {
   flex-shrink: 0;
   background: #fff;
   overflow: hidden;
+  margin: 0 auto;
 }
 
-/* Estilos para el primer elemento de la grid */
+.popular-grid {
+  display: grid;
+  place-content: center;
+}
+
 .popular-grid .product-card:nth-child(odd) {
   border-radius: 12px 32px 12px 12px;
 }
 
-/* Estilos para el segundo elemento de la grid */
 .popular-grid .product-card:nth-child(even) {
   border-radius: 32px 12px 12px 12px;
 }
@@ -72,7 +76,6 @@ a {
   flex-shrink: 0;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
 }
 
 .product-img img {

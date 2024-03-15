@@ -11,6 +11,9 @@ app.use(morgan("dev"));
 
 app.use("/api/stock-price", stockPriceRoute);
 
+app.use("/api/payments", stockPriceRoute);
+
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on https://react-challengue-production.up.railway.app
+`);
 });

@@ -37,8 +37,8 @@ const MenuModal = () => {
           <rect x="4" y="17" width="16" height="1.5" rx="0.75" fill="#0F0D23" />
         </svg>
       </span>
-      <button id="menu-list" className={`menu-list ${isMenuOpen ? "animate" : ""}`}>
-        <ul className="menu-ul">
+      <button id="menu-list" className={`menu-list ${isMenuOpen ? "animate-menu" : ""}`}>
+        <ul className="menu-class">
           <li className="li-menu">
             <a href="/">Home</a>
           </li>

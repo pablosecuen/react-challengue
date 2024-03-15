@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import "./popular.css";
 
 const Popular = ({ products }) => {
-  console.log(products);
   return (
     <section className="popular-container">
       <div className="popular-title">

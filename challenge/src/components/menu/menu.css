@@ -58,7 +58,7 @@
   position: relative;
 }
 
-.animate {
+.animate-menu {
   animation: bounce 0.5s ease;
   opacity: 1;
   list-style: none;
@@ -81,7 +81,6 @@
 
 .li-menu a {
   text-decoration: none;
-
 }
 
 .link-card {
