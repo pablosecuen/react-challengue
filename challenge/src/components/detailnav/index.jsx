@@ -1,10 +1,25 @@
+import { useEffect, useState } from "react";
+import ShopCart from "../modal/shop-cart";
 import "./detailnav.css";
 const DetailNav = () => {
+  const [cart] = useState(() => {
+    const storedCart = localStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+  const handleGoBack = () => {
+    window.history.back();
+  };
+
+  useEffect(() => {
+    // Actualizar el localStorage cada vez que el estado del carrito cambie
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <nav className="detail-navbar">
       <div className="detail-container">
         {" "}
-        <div className="back-icon">
+        <div className="back-icon" onClick={handleGoBack}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -22,7 +37,7 @@ const DetailNav = () => {
           </svg>
         </div>
         <h5>Detail</h5>
-        <div className="dots-icon">
+        {/*    <div className="dots-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -34,7 +49,8 @@ const DetailNav = () => {
             <circle cx="12.5" cy="11.5" r="1.5" fill="#323232" />
             <circle cx="19.5" cy="11.5" r="1.5" fill="#323232" />
           </svg>
-        </div>
+        </div> */}
+        <ShopCart cart={cart} />
       </div>
     </nav>
   );

@@ -2,15 +2,17 @@
 import { useState } from "react";
 import "./details.css";
 import DetailsFooter from "../details-footer";
+import { Toaster } from "sonner";
 const ProductDetails = ({ product }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
+
   if (!product) {
-    return null; // Retornar null si product es undefined
+    return null;
   }
   const { information } = product;
 
-  const truncatedDescription = information.slice(0, 120);
+  const truncatedDescription = information?.slice(0, 120);
 
   const toggleDescription = () => {
     setShowFullDescription(!showFullDescription);
@@ -18,25 +20,21 @@ const ProductDetails = ({ product }) => {
 
   const handleProductSelect = (sku) => {
     setSelectedProduct({
-      name: sku.name,
-      price: sku.price,
+      ...product,
+      skus: sku,
     });
-  };
-
-  const formatPrice = (priceInCents) => {
-    const priceInDollars = priceInCents / 100;
-    return priceInDollars.toFixed(2);
   };
 
   return (
     <article className="product-container">
+      <Toaster position="top-center" />
       <div>
         <img src={product?.image} alt={product?.title} />
       </div>
       <div className="props-container">
         <div className="branding">
           <h3>{product?.brand}</h3>
-          <span>${formatPrice(selectedProduct?.price || product?.skus[0].price)}</span>
+          <span>${selectedProduct?.price || product?.skus[0].price}</span>
         </div>
         <div className="origin">
           <p>Origin: {product?.origin} / </p>
@@ -62,13 +60,13 @@ const ProductDetails = ({ product }) => {
                 className="details-button"
                 onClick={() => handleProductSelect(sku)}
               >
-                {sku.name.replace(/cans/i, "").trim()}
+                {sku.name}
               </button>
             ))}
           </div>
         </div>
       </div>
-      <DetailsFooter />
+      <DetailsFooter selectedProduct={selectedProduct} />
     </article>
   );
 };

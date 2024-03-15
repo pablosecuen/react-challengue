@@ -88,8 +88,7 @@
 }
 
 .details-button {
-  width: 87px;
-  height: 31px;
+  padding: 5px 5px;
   flex-shrink: 0;
   border-radius: 15.5px;
   border: 1px solid #969696;

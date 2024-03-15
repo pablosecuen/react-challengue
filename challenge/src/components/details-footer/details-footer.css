@@ -16,6 +16,7 @@
 }
 
 .cart-button {
+  cursor: pointer;
   width: 247px;
   height: 54px;
   flex-shrink: 0;

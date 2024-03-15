@@ -9,8 +9,8 @@ const Popular = ({ products }) => {
         <a href="/store">See all</a>
       </div>
       <div className="popular-grid">
-        {products.map((product) => (
-          <a href={`/${product.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
+        {products?.map((product) => (
+          <a href={`/${product?.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
             <article className="product-card">
               <h4 className="card-title">{product.brand}</h4>
               <div className="product-img">

@@ -1,6 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import productsData from "../data/products";
-import stockPriceData from "../data/stock-price";
+import axiosInstance from "./axiosInstance";
 
 // Context for proper accesibility across the app components to products information
 const ProductContext = createContext();
@@ -10,24 +9,33 @@ export const ProductProvider = ({ children }) => {
   const [productData, setProductData] = useState([]);
 
   useEffect(() => {
-    // Products data handling for pre processing, and avoiding multiple api calls throghout components, imperative for avoiding callback hells, infinit loops, and innecesary hooks usage, improving performance across the app
-    const unifiedProductsData = productsData.map((product) => {
-      const unifiedSkus = product.skus.map((sku) => {
-        const stockPrice = stockPriceData[sku.code];
-        return { ...sku, ...stockPrice };
-      });
-      return { ...product, skus: unifiedSkus };
-    });
-    setProductData(unifiedProductsData);
+    const fetchData = async () => {
+      try {
+        const products = await axiosInstance.get("/api/stock-price/list");
+
+        setProductData(products.data);
+      } catch (error) {
+        console.error("Error fetching product data:", error);
+        throw new Error(error.message || "Error fetching product data");
+      }
+    };
+
+    fetchData();
   }, []);
 
   // Crossing information throw skus to obtain price and stock, adding information to products data structure
-  const getProductInfo = (sku) => {
-    return productData.find((product) => product.skus.some((skuObj) => skuObj.code === sku));
+  const fetchProductData = async (id) => {
+    try {
+      const response = await axiosInstance.get(`/api/stock-price/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching product data:", error);
+      return null;
+    }
   };
 
   return (
-    <ProductContext.Provider value={{ getProductInfo, products: productData }}>
+    <ProductContext.Provider value={{ fetchProductData, products: productData }}>
       {children}
     </ProductContext.Provider>
   );
