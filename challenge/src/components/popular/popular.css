@@ -1,7 +1,6 @@
 .popular-container {
   display: flex;
   flex-direction: column;
-
   max-width: 90%;
   margin: 0 auto;
   margin-bottom: 72px;
@@ -72,6 +71,8 @@ a {
   height: 122px;
   flex-shrink: 0;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
 }
 
 .product-img img {
