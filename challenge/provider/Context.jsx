@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import axiosInstance from "./axiosInstance";
+import axios from "axios";
 
 // Context for proper accesibility across the app components to products information
 const ProductContext = createContext();
@@ -7,6 +8,8 @@ const ProductContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const ProductProvider = ({ children }) => {
   const [productData, setProductData] = useState([]);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [paymentInfo, setPaymentInfo] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,7 +37,7 @@ export const ProductProvider = ({ children }) => {
     }
   };
 
-  /*   const createPreferenceAsync = async (body) => {
+  const createPreferenceAsync = async (body) => {
     try {
       const response = await axiosInstance.post(`/api/payments/create-preference`, body);
       setPreferenceId(response.data);
@@ -42,10 +45,35 @@ export const ProductProvider = ({ children }) => {
       console.error("Error creating preference:", error);
       throw error;
     }
-  }; */
+  };
+  const accessToken = import.meta.env.VITE_MERCADOPAGO_ACCESS_TOKEN;
+
+  const fetchPaymentInfoById = async (paymentId) => {
+    try {
+      const response = await axios.get(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+      setPaymentInfo(response.data);
+    } catch (error) {
+      console.error("Error fetching payment info:", error);
+      throw error;
+    }
+  };
 
   return (
-    <ProductContext.Provider value={{ fetchProductData, products: productData }}>
+    <ProductContext.Provider
+      value={{
+        createPreferenceAsync,
+        fetchProductData,
+        products: productData,
+        preferenceId,
+        paymentInfo,
+        fetchPaymentInfoById,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

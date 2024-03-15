@@ -5,9 +5,12 @@ import { useState } from "react";
 import { Wallet } from "@mercadopago/sdk-react";
 import EditItemQuantityButton from "../../components/button/edit-quantity-button";
 import "./checkout.css";
+import { useProductContext } from "../../../provider/Context";
 
 const Checkout = () => {
-  const { cart, removeFromCart, createPreferenceAsync, preferenceId } = useCart();
+  const { cart, removeFromCart } = useCart();
+  const { createPreferenceAsync, preferenceId } = useProductContext();
+  console.log(preferenceId);
   const [showCart, setShowCart] = useState(false);
   const [activeTab, setActiveTab] = useState("information");
   const [formData, setFormData] = useState({
@@ -41,14 +44,14 @@ const Checkout = () => {
           title: item.brand,
           description: item.information,
           category_id: item.brand,
-          unit_price: item.skus[0].price,
+          unit_price: item.skus.price,
           quantity: item.quantity,
-          size: item.skus[0].name,
+          size: item.skus.name,
         })),
         back_urls: {
-          success: "https://react-challengue.vercel.app/checkout/success",
-          failure: "https://react-challengue.vercel.app/checkout/failure",
-          pending: "https://react-challengue.vercel.app/checkout/pending",
+          success: "https://react-challengue.vercel.app/success",
+          failure: "https://react-challengue.vercel.app/failure",
+          pending: "https://react-challengue.vercel.app/pending",
         },
         auto_return: "approved",
         notification_url: "https://react-challengue-production.up.railway.app/api/payments/webhook",
@@ -390,7 +393,7 @@ const Checkout = () => {
 
               {preferenceId && (
                 <Wallet
-                  initialization={{ preferenceId: preferenceId }}
+                  initialization={{ preferenceId: preferenceId.preferenceId }}
                   customization={{ texts: { valueProp: "smart_option" } }}
                 />
               )}
