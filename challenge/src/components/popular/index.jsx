@@ -13,7 +13,7 @@ const Popular = ({ products }) => {
       </div>
       <div className="popular-grid">
         {products?.map((product) => (
-          <Link href={`/${product?.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
+          <Link to={`/${product?.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
             <article className="product-card">
               <h4 className="card-title">{product.brand}</h4>
               <div className="product-img">
