@@ -10,7 +10,6 @@ const Details = () => {
 
   const [id] = productId.split("-");
 
-  // Filtrar el producto por su ID
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -22,8 +21,11 @@ const Details = () => {
     };
 
     fetchProduct();
+
+    const intervalId = setInterval(fetchProduct, 5000);
+    return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [id]);
 
   return (
     <div>
