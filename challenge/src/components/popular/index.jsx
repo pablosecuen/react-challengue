@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
 import "./popular.css";
 
 const Popular = ({ products }) => {
+  console.log(products);
   return (
     <section className="popular-container">
       <div className="popular-title">
@@ -11,7 +13,7 @@ const Popular = ({ products }) => {
       </div>
       <div className="popular-grid">
         {products?.map((product) => (
-          <a href={`/${product?.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
+          <Link href={`/${product?.id}-${product.brand.replace(/\s+/g, "-")}`} key={product.id}>
             <article className="product-card">
               <h4 className="card-title">{product.brand}</h4>
               <div className="product-img">
@@ -42,7 +44,7 @@ const Popular = ({ products }) => {
                 </button>
               </div>
             </article>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
