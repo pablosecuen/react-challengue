@@ -43,12 +43,23 @@ The project consists of two main parts: the backend API built with Express.js an
 
 1. **Dynamic Product Detail Page (PDP)**: Implemented an API endpoint to fetch stock and price information for a specific product identified by its SKU code. The PDP updates stock and price information every 5 seconds, ensuring real-time data accuracy.
   
-2. **URL-based Routing**: Access the PDP through a URL in the format of `/productId-productBrand`, providing a user-friendly and SEO-friendly URL structure.
+2. **New Shop Route**: Access the complete products catalog through a URL in the format of `/shop`, also including Add to cart functionality.
 
-3. **Payment Gateway Integration**: Integrated MercadoPago's payment gateway into the application, allowing users to make secure online payments for their purchases.
+3. **Filtering**: both Home and Shop section have a Search Input Bar that allows user to filter products by brand for a better user experience.
 
-3.**Seo Dinamic features JSON-LD**: added metadata to html, and a dynamic function GenerateMetada por details product page with a  JSON-LD structure and scripting to ensure html setting
+4. **URL-based Routing**: Access the PDP through a URL in the format of `/productId-productBrand`, providing a user-friendly and SEO-friendly URL structure.
 
+5. **Global products endpoint**: New endpoint `/api/stock-price/list)` thats brings objets separately with a new individual data structure, not good for complex and larga databases, for confortable data structure for small e-commemrces.
+
+6. **PDP exlusive endpoint**:  `/api/stock-price/:code)` thats brings product details with a 5sec interval for updated information details. Great for having updated pricing information, stock information, and a balanced api calling.
+
+7. **Payment Gateway Integration**: Integrated MercadoPago's payment gateway into the application, allowing users to make secure online payments for their purchases.
+
+8.**Seo Dinamic features JSON-LD**: added metadata to html, and a dynamic function GenerateMetada por details product page with a  JSON-LD structure and scripting to ensure html setting
+
+9. **Webhook Controller**: Enables various actions such as invoking MercadoPago's IPN, retrieving complete payment information, and storing transaction details in the database for scalability and administration control.
+
+10. **Create-Preference Controller**: Allows manual sending of payment, payer, and shipping information via the `/api/payment/create-preference` endpoint, offering enhanced control over user data and facilitating marketing insights.
 
 ---
 
@@ -69,7 +80,8 @@ To run the project locally, follow these steps:
 
 For testing purposes, you can use the following credentials:
 
-- **MercadoPago Sandbox Accounts**: Use the provided test credentials to simulate payment transactions without real money.
+- **MercadoPago Sandbox Accounts**: Use the provided test credentials to simulate payment transactions without real money. already have a server mounted for https webooks through `/api/payment/webhook`
+
 
 Reseller test account for payment gateway
 TESTUSER1681282947
