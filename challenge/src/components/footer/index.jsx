@@ -1,35 +1,65 @@
+import { useLocation } from "react-router-dom";
 import "./footer.css";
+import { useEffect, useState } from "react";
 const Footer = () => {
+  const location = useLocation();
+  const [currentTab, setCurrentTab] = useState(0);
+  console.log(location.pathname);
+  useEffect(() => {
+    const path = location.pathname;
+    switch (path) {
+      case "/":
+        setCurrentTab(0);
+        break;
+      case "/another-route":
+        setCurrentTab(1);
+        break;
+      case "/checkout":
+        setCurrentTab(2);
+        break;
+      case "/another-route2":
+        setCurrentTab(3);
+        break;
+      default:
+        setCurrentTab(0);
+        break;
+    }
+  }, [location.pathname]);
+
+
+
   return (
     <footer className="footer">
       <ul className="footer-list">
-        <li tabIndex="0">
-          <svg
-            width="64px"
-            height="64px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-            <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              {" "}
-              <g id="Navigation / House_01">
+        <li tabIndex="0" className={currentTab === 0 ? "active" : ""}>
+          <a href="/">
+            <svg
+              width="27px"
+              height="27px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+              <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
                 {" "}
-                <path
-                  id="Vector"
-                  d="M20 17.0002V11.4522C20 10.9179 19.9995 10.6506 19.9346 10.4019C19.877 10.1816 19.7825 9.97307 19.6546 9.78464C19.5102 9.57201 19.3096 9.39569 18.9074 9.04383L14.1074 4.84383C13.3608 4.19054 12.9875 3.86406 12.5674 3.73982C12.1972 3.63035 11.8026 3.63035 11.4324 3.73982C11.0126 3.86397 10.6398 4.19014 9.89436 4.84244L5.09277 9.04383C4.69064 9.39569 4.49004 9.57201 4.3457 9.78464C4.21779 9.97307 4.12255 10.1816 4.06497 10.4019C4 10.6506 4 10.9179 4 11.4522V17.0002C4 17.932 4 18.3978 4.15224 18.7654C4.35523 19.2554 4.74432 19.6452 5.23438 19.8482C5.60192 20.0005 6.06786 20.0005 6.99974 20.0005C7.93163 20.0005 8.39808 20.0005 8.76562 19.8482C9.25568 19.6452 9.64467 19.2555 9.84766 18.7654C9.9999 18.3979 10 17.932 10 17.0001V16.0001C10 14.8955 10.8954 14.0001 12 14.0001C13.1046 14.0001 14 14.8955 14 16.0001V17.0001C14 17.932 14 18.3979 14.1522 18.7654C14.3552 19.2555 14.7443 19.6452 15.2344 19.8482C15.6019 20.0005 16.0679 20.0005 16.9997 20.0005C17.9316 20.0005 18.3981 20.0005 18.7656 19.8482C19.2557 19.6452 19.6447 19.2554 19.8477 18.7654C19.9999 18.3978 20 17.932 20 17.0002Z"
-                  stroke="#8F8F8F"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>{" "}
-              </g>{" "}
-            </g>
-          </svg>
+                <g id="Navigation / House_01">
+                  {" "}
+                  <path
+                    id="Vector"
+                    d="M20 17.0002V11.4522C20 10.9179 19.9995 10.6506 19.9346 10.4019C19.877 10.1816 19.7825 9.97307 19.6546 9.78464C19.5102 9.57201 19.3096 9.39569 18.9074 9.04383L14.1074 4.84383C13.3608 4.19054 12.9875 3.86406 12.5674 3.73982C12.1972 3.63035 11.8026 3.63035 11.4324 3.73982C11.0126 3.86397 10.6398 4.19014 9.89436 4.84244L5.09277 9.04383C4.69064 9.39569 4.49004 9.57201 4.3457 9.78464C4.21779 9.97307 4.12255 10.1816 4.06497 10.4019C4 10.6506 4 10.9179 4 11.4522V17.0002C4 17.932 4 18.3978 4.15224 18.7654C4.35523 19.2554 4.74432 19.6452 5.23438 19.8482C5.60192 20.0005 6.06786 20.0005 6.99974 20.0005C7.93163 20.0005 8.39808 20.0005 8.76562 19.8482C9.25568 19.6452 9.64467 19.2555 9.84766 18.7654C9.9999 18.3979 10 17.932 10 17.0001V16.0001C10 14.8955 10.8954 14.0001 12 14.0001C13.1046 14.0001 14 14.8955 14 16.0001V17.0001C14 17.932 14 18.3979 14.1522 18.7654C14.3552 19.2555 14.7443 19.6452 15.2344 19.8482C15.6019 20.0005 16.0679 20.0005 16.9997 20.0005C17.9316 20.0005 18.3981 20.0005 18.7656 19.8482C19.2557 19.6452 19.6447 19.2554 19.8477 18.7654C19.9999 18.3978 20 17.932 20 17.0002Z"
+                    stroke="#8F8F8F"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  ></path>{" "}
+                </g>{" "}
+              </g>
+            </svg>
+          </a>
         </li>
-        <li tabIndex="1">
+        <li tabIndex="1" className={currentTab === 1 ? "active" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -72,27 +102,29 @@ const Footer = () => {
             />
           </svg>
         </li>
-        <li tabIndex="2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="21"
-            viewBox="0 0 21 21"
-            fill="none"
-          >
-            <circle cx="10" cy="5" r="4.25" stroke="#8F8F8F" strokeWidth="1.5" />
-            <path
-              d="M2.30623 8.59689C2.50953 6.97049 3.89208 5.75 5.53113 5.75H14.4689C16.1079 5.75 17.4905 6.97049 17.6938 8.59689L18.6938 16.5969C18.9362 18.5367 17.4237 20.25 15.4689 20.25H4.53113C2.57626 20.25 1.06375 18.5367 1.30623 16.5969L2.30623 8.59689Z"
-              fill=""
-              stroke="#8F8F8F"
-              strokeWidth="1.5"
-            />
-            <circle cx="7.75" cy="9.75" r="0.75" fill="#8F8F8F" />
-            <circle cx="11.75" cy="9.75" r="0.75" fill="#8F8F8F" />
-            <circle cx="17.5" cy="5.5" r="2.75" fill="#FF9F24" stroke="white" strokeWidth="1.5" />
-          </svg>
+        <li tabIndex="2" className={currentTab === 2 ? "active" : ""}>
+          <a href="/checkout">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="21"
+              viewBox="0 0 21 21"
+              fill="none"
+            >
+              <circle cx="10" cy="5" r="4.25" stroke="#8F8F8F" strokeWidth="1.5" />
+              <path
+                d="M2.30623 8.59689C2.50953 6.97049 3.89208 5.75 5.53113 5.75H14.4689C16.1079 5.75 17.4905 6.97049 17.6938 8.59689L18.6938 16.5969C18.9362 18.5367 17.4237 20.25 15.4689 20.25H4.53113C2.57626 20.25 1.06375 18.5367 1.30623 16.5969L2.30623 8.59689Z"
+                fill=""
+                stroke="#8F8F8F"
+                strokeWidth="1.5"
+              />
+              <circle cx="7.75" cy="9.75" r="0.75" fill="#8F8F8F" />
+              <circle cx="11.75" cy="9.75" r="0.75" fill="#8F8F8F" />
+              <circle cx="17.5" cy="5.5" r="2.75" fill="#FF9F24" stroke="white" strokeWidth="1.5" />
+            </svg>
+          </a>
         </li>
-        <li tabIndex="3">
+        <li tabIndex="3" className={currentTab === 3 ? "active" : ""}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

@@ -3,6 +3,7 @@ import DetailNav from "../../components/detailnav";
 import { useProductContext } from "/provider/Context";
 import ProductDetails from "../../components/details";
 import { useEffect, useState } from "react";
+
 const Details = () => {
   const { fetchProductData } = useProductContext();
   const [product, setProduct] = useState(null);

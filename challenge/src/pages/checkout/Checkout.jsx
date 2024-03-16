@@ -10,7 +10,7 @@ import { useProductContext } from "../../../provider/Context";
 const Checkout = () => {
   const { cart, removeFromCart } = useCart();
   const { createPreferenceAsync, preferenceId } = useProductContext();
-  console.log(preferenceId);
+
   const [showCart, setShowCart] = useState(false);
   const [activeTab, setActiveTab] = useState("information");
   const [formData, setFormData] = useState({
@@ -36,7 +36,6 @@ const Checkout = () => {
   };
 
   const handleCreatePreference = async () => {
-    // Verifica que cart esté definido y sea un array
     if (cart && Array.isArray(cart) && cart.length > 0) {
       const body = {
         items: cart.map((item) => ({
@@ -244,7 +243,7 @@ const Checkout = () => {
                 </div>
               </div>
               <div>
-                <h3 className=" info-title">Datos de envio</h3>
+                <h3 className=" info-title">Shipping information</h3>
                 <div className="info-container">
                   <div className="info-body">
                     <label htmlFor="firstname" className="">
@@ -355,7 +354,7 @@ const Checkout = () => {
                   onClick={() => handleTabChange("shipping")}
                   className="bg-blue-600 hover:bg-blue-800 md:w-1/3  py-2 px-4 rounded w-full h-16 semibold tracking-wider text-sm semibold"
                 >
-                  Continuae to devilery
+                  Continue to devilery
                 </button>
               </div>
             </form>

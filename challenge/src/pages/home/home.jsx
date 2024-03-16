@@ -4,11 +4,9 @@ import Popular from "/src/components/popular/index";
 import SearchBar from "/src/components/searchbar/index";
 import UserDisplay from "/src/components/user-display/index";
 import { useProductContext } from "/provider/Context";
+import { useEffect, useState } from "react";
 
 import "./home.css";
-
-import Footer from "/src/components/footer";
-import { useEffect, useState } from "react";
 
 function Home() {
   const { products } = useProductContext();
@@ -34,7 +32,6 @@ function Home() {
       <SearchBar onSearch={filterProductsByBrand} />
       <Categories />
       <Popular products={filteredProducts} />
-      <Footer />
     </div>
   );
 }

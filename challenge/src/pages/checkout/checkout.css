@@ -1,12 +1,19 @@
 .checkout-container {
   max-width: 90%;
   margin: 0 auto;
+  font-family: "DM Sans";
 }
 
 .cart-preview {
-  border: 1px solid black;
+  border: 1px solid #ff9f24;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
+}
+
+.card-cart {
+  width: 90%;
+  margin: 0 auto;
 }
 
 .cart-preview svg {
@@ -30,6 +37,7 @@
   opacity: 0;
   transition: max-height 0.5s, opacity 0.5s;
   list-style: none;
+  padding: 0;
 }
 
 .cart-items.show {
@@ -39,7 +47,9 @@
 }
 
 .form-container {
-  max-width: 100svw;
+  max-width: 90%;
+  margin: 0 auto;
+  font-family: "DM Sans";
 }
 
 .tabs-container {
@@ -66,7 +76,7 @@
 
 .tab-button1 {
   font-size: 16px;
-  color: blue;
+  color: #ff9f24;
 }
 .tab-button2 {
   font-weight: 600;
@@ -92,7 +102,7 @@
   display: flex;
   align-items: center;
   height: 20px;
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
 }
 
@@ -121,12 +131,12 @@
   display: flex;
   flex-direction: column;
   width: 90%;
-  margin: 20px auto;
+  margin: 20px auto 100px auto;
 }
 
 .button-form-container button {
   border: 0;
-  background-color: blue;
+  background-color: #ff9f24;
   padding: 10px 20px;
   color: white;
   font-size: 14px;
@@ -136,7 +146,7 @@
 .shipping-container {
   width: 90%;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid #ff9f24;
   border-radius: 5px;
   padding: 0 5px;
   margin-bottom: 20px;
@@ -145,7 +155,7 @@
   display: flex;
   justify-content: space-between;
   gap: 5px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ff9f24;
   padding: 20px 0px;
 }
 
@@ -154,11 +164,15 @@
   flex-direction: row;
   align-items: center;
   border: 0;
-  background-color: blue;
+  background-color: #ff9f24;
   padding: 10px 20px;
   color: white;
   font-size: 14px;
   border-radius: 5px;
+}
+
+.cart-items span {
+  color: black;
 }
 
 .button-change svg {

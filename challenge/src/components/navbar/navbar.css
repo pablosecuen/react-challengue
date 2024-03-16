@@ -40,3 +40,7 @@
   flex-shrink: 0;
   margin: auto auto;
 }
+
+.cl-userButtonPopoverFooter {
+  display: none;
+}

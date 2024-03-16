@@ -1,4 +1,85 @@
 .success-container {
-  width: 100svw;
-  min-height: 100svh;
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  font-family: "DM Sans";
+}
+
+.success-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto 100px auto;
+}
+
+.success-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-info {
+  text-align: center;
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.brand-link {
+  font-size: 0.875rem;
+  color: #4299e1;
+}
+
+.payment-details {
+  max-width: 36rem;
+  width: 100%;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.product-item {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.product-props {
+  padding: 10px;
+  min-height: 50px;
+  min-width: 200px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.button-container button {
+  background-color: #ff9f24;
+  color: #fff;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+  background-color: #fd9103;
+}
+
+ul {
+  list-style-type: none;
 }

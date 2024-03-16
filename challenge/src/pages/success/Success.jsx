@@ -33,66 +33,66 @@ const Success = () => {
       });
     }
   };
-  console.log(paymentInfo);
+
   return (
     <div className="success-container">
       <Navbar />
-      <div className="flex justify-center items-center h-screen">
-        <div className="flex flex-col items-center gap-8">
-          <div className="flex flex-col">
-            <p className="text-md">Beer e-Commerce</p>
-            <a href="https://react-challengue.vercel.app/" className="text-small text-default-500">
+      <div className="success-content">
+        <div className="success-inner">
+          <div className="brand-info">
+            <p className="brand-name">Beer e-Commerce</p>
+            <a href="https://react-challengue.vercel.app/" className="brand-link">
               react-challengue.vercel.app
             </a>
           </div>
           {paymentInfo ? (
-            <div className="min-w-96 max-w-screen-xl" ref={headerRef}>
-              <div className="flex gap-3">
-                <div className="flex flex-col">
-                  <p className="text-md">Beer e-Commerce</p>
-                  <a
-                    href="https://react-challengue.vercel.app/"
-                    className="text-small text-default-500"
-                  >
-                    react-challengue.vercel.app
-                  </a>
-                </div>
-              </div>
-              <hr />
-              <div>
-                <div className="flex flex-col gap-4 ">
-                  <h1>Purchase was Succesfull!</h1>
-                  <p>Payment details:</p>
-                  <ul>
-                    <li>Payment ID: {paymentInfo.id}</li>
-                    <li>Date of Approval: {paymentInfo.date_approved}</li>
-                    <li>Status: {paymentInfo.status}</li>
-                  </ul>
-                  <p>Purchase details:</p>
-                  <ul className="flex  gap-4 flex-wrap">
-                    {paymentInfo.additional_info.items.map((product, index) => (
-                      <li key={index} className="border  rounded-md p-4">
-                        <strong>Product #{index + 1}</strong>
-                        <ul>
-                          <li>Brand: {product.title}</li>
-                          <li>id: {product.id}</li>
-                          <li>Cantidad: {product.quantity}</li>
-                          <li>Precio Unitario:$ {product.price}</li>
-                        </ul>
-                      </li>
-                    ))}
-                  </ul>
-                  <p>Total Pagado: $ {paymentInfo.transaction_amount}</p>
-                </div>
-              </div>
-              <hr />
-              <div className="flex gap-3 mx-auto justify-center">
-                <button onClick={handleContinueShopping}>Continuar Comprando</button>
-                <button onClick={handleSaveSnapshot}>Guardar Comprobantes</button>
+            <div className="payment-details">
+              <h1>Purchase was Succesfull!</h1>
+              <p>
+                <strong>Payment details:</strong>
+              </p>
+              <ul>
+                <li>
+                  <strong>Payment ID: </strong>
+                  {paymentInfo.id}
+                </li>
+
+                <li>
+                  <strong>Status: </strong>
+                  {paymentInfo.status}
+                </li>
+              </ul>
+              <p>
+                <strong>Purchase details:</strong>
+              </p>
+              <ul className="product-list">
+                {paymentInfo.additional_info.items.map((product, index) => (
+                  <li key={index} className="product-item">
+                    <p>
+                      {" "}
+                      <strong>Product #{index + 1}</strong>
+                    </p>
+                    <ul className="product-props">
+                      <li>Brand: {product.title}</li>
+                      <li>id: {product.id}</li>
+                      <li>Quantity: {product.quantity}</li>
+                      <li>Unit Price: $ {product.price}</li>
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+              <p>
+                <strong>Total Paid: $ {paymentInfo.transaction_amount}</strong>
+              </p>
+              <div className="button-container">
+                <button onClick={handleContinueShopping}>Continue Shopping</button>
+                <button onClick={handleSaveSnapshot}>Save Receipts</button>
               </div>
             </div>
           ) : (
-            <p>Cargando información del pago...</p>
+            <p>
+              <strong>Loading payment information...</strong>
+            </p>
           )}
         </div>
       </div>
