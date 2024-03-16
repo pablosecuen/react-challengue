@@ -22,12 +22,14 @@ const getStockPriceByCode = (code) => {
 
 const getConcatenatedProducts = () => {
   const concatenatedProducts = productsData.map((product) => {
+    console.log(productsData);
     const unifiedSkus = product.skus.map((sku) => {
       const stockPrice = stockPriceData[sku.code];
       return { ...sku, ...stockPrice };
     });
     return { ...product, skus: unifiedSkus };
   });
+  console.log(concatenatedProducts);
   return concatenatedProducts;
 };
 

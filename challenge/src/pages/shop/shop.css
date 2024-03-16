@@ -119,7 +119,6 @@ a {
 .card-footer svg:hover {
   transform: scale(1.2);
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .sku-name {

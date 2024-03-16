@@ -27,7 +27,6 @@ const ProductDetails = ({ product }) => {
 
   return (
     <article className="product-container">
-      <Toaster position="top-center" />
       <div>
         <img src={product?.image} alt={product?.title} />
       </div>
