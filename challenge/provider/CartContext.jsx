@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
@@ -15,23 +16,21 @@ const cartReducer = (state, action) => {
         totalCost: state.totalCost + action.payload.skus.price * action.payload.quantity,
       };
     case "REMOVE_FROM_CART":
+      const removedItem = state.cart.find((item) => item.skus.code === action.payload);
       return {
         ...state,
         cart: state.cart.filter((item) => item.skus.code !== action.payload),
-        totalCost:
-          state.totalCost - state.cart.find((item) => item.skus.code === action.payload).skus.price,
+        totalCost: state.totalCost - removedItem.skus.price * removedItem.quantity,
       };
     case "UPDATE_QUANTITY":
+      const updatedProduct = state.cart.find((item) => item.skus.code === action.payload);
+      const updatedCost = (action.quantity - updatedProduct.quantity) * updatedProduct.skus.price;
       return {
         ...state,
         cart: state.cart.map((item) =>
           item.skus.code === action.payload ? { ...item, quantity: action.quantity } : item
         ),
-        totalCost:
-          state.totalCost +
-          (action.quantity -
-            state.cart.find((item) => item.skus.code === action.payload).quantity) *
-            state.cart.find((item) => item.skus.code === action.payload).skus.price,
+        totalCost: state.totalCost + updatedCost,
       };
     default:
       return state;
