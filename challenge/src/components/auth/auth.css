@@ -1,6 +1,13 @@
 header a {
-  border: 1px solid black;
+  border: 1px solid #ff9f24;
+  color: rgba(0, 0, 0, 0.582);
   border-radius: 15px;
   padding: 5px 10px;
   text-decoration: none;
+  font-family: "DM sans";
+  background-color: white;
+}
+
+header:has(> a) {
+  filter: drop-shadow(4px 4px 4px rgba(255, 159, 36, 0.4));
 }
