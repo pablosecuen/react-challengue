@@ -47,6 +47,8 @@ The project consists of two main parts: the backend API built with Express.js an
 
 3. **Payment Gateway Integration**: Integrated MercadoPago's payment gateway into the application, allowing users to make secure online payments for their purchases.
 
+3.**Seo Dinamic features JSON-LD**: added metadata to html, and a dynamic function GenerateMetada por details product page with a  JSON-LD structure and scripting to ensure html setting
+
 
 ---
 
