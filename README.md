@@ -79,8 +79,8 @@ To run the project locally, follow these steps:
 1. Clone the repository to your local machine.
 2. Install dependencies using `npm install` in both the backend and frontend directories.
 3. Download the `.env` in this repository. (thought it was better to include them stead of ignoring the in the git ignore file for supervition purposes)
-4. Start the backend server using `npm start` or `npm run dev`.
-5. Start the frontend development server using `npm run dev` or `npm start`.
+4. Start the backend server using `npm start` .
+5. Start the frontend development server using `npm run dev` .
 6. Access the application in your browser at the specified URL.
 
 ---
