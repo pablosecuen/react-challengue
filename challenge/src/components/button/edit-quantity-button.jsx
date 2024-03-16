@@ -16,14 +16,14 @@ const EditItemQuantityButton = ({ item, type }) => {
   };
 
   return (
-    <button
+    <div
       aria-label={type === "plus" ? "Increase item quantity" : "Reduce item quantity"}
       onClick={handleQuantityChange}
       disabled={type === "minus" && item.quantity === 1}
       className={`${"button"} ${type === "minus" ? "minus" : ""}`}
     >
       {type === "plus" ? <PlusIcon className="icon" /> : <MinusIcon className="icon" />}
-    </button>
+    </div>
   );
 };
 
