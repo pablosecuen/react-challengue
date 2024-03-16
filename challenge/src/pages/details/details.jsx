@@ -27,25 +27,20 @@ const Details = () => {
     return () => clearInterval(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
-  console.log(product);
+
   useEffect(() => {
     if (product) {
-      // Actualizar el título de la página con el nombre del producto
       document.title = product.brand;
 
-      // Actualizar la etiqueta meta de descripción con la descripción del producto
       const metaDescription = document.querySelector('meta[name="description"]');
       if (metaDescription) {
         metaDescription.content = product.information;
       }
-
-      // Actualizar la etiqueta meta de robots para indexar la página
       const metaRobots = document.querySelector('meta[name="robots"]');
       if (metaRobots) {
         metaRobots.content = "index, follow";
       }
 
-      // Actualizar la etiqueta og:image con la imagen del producto
       const ogImage = document.querySelector('meta[property="og:image"]');
       if (ogImage && product.image) {
         ogImage.content = product.image;

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Footer = () => {
   const location = useLocation();
   const [currentTab, setCurrentTab] = useState(0);
-  console.log(location.pathname);
+
   useEffect(() => {
     const path = location.pathname;
     switch (path) {

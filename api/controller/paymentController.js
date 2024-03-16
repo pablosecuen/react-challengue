@@ -7,9 +7,9 @@ const client = new MercadoPagoConfig({
   accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN,
 });
 
-// Controlador para crear una preferencia de Mercado Pago
+
 const createPreference = async (req, res) => {
-  console.log("log de req.body en controller", req.body);
+
   const body = {
     items: req.body.items.map((item) => ({
       id: item.id,
@@ -57,12 +57,9 @@ const createPreference = async (req, res) => {
   };
   try {
     const preference = new Preference(client);
-    console.log("log de preference", preference);
     const result = await preference.create({ body });
-    console.log("log de preference id", result.id);
     res.status(200).json({ preferenceId: result.id });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };

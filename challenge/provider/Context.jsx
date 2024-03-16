@@ -15,7 +15,6 @@ export const ProductProvider = ({ children }) => {
     const fetchData = async () => {
       try {
         const products = await axiosInstance.get("/api/stock-price/list");
-        console.log(products.data);
         setProductData(products.data);
       } catch (error) {
         console.error("Error fetching product data:", error);
