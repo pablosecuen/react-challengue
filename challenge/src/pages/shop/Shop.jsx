@@ -6,7 +6,7 @@ import Categories from "../../components/categories/index";
 import "./shop.css";
 import Navbar from "../../components/navbar";
 import AllProducts from "../../components/all-products";
-import { Toaster } from "sonner";
+
 
 function Shop() {
   const { products } = useProductContext();

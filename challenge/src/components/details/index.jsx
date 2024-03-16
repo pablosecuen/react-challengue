@@ -2,7 +2,7 @@
 import { useState } from "react";
 import "./details.css";
 import DetailsFooter from "../details-footer";
-import { Toaster } from "sonner";
+
 const ProductDetails = ({ product }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showFullDescription, setShowFullDescription] = useState(false);
