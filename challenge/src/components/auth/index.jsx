@@ -1,5 +1,6 @@
 import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 import "./auth.css";
+import { Link } from "react-router-dom";
 const AuthComponent = () => {
   return (
     <header>
@@ -7,7 +8,7 @@ const AuthComponent = () => {
         <UserButton afterSignOutUrl="/" />
       </SignedIn>
       <SignedOut>
-        <a href="/sign-in">Sign In</a>
+        <Link to="/sign-in">Sign In</Link>
       </SignedOut>
     </header>
   );

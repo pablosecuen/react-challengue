@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./footer.css";
 import { useEffect, useState } from "react";
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
     <footer className="footer">
       <ul className="footer-list">
         <li tabIndex="0" className={currentTab === 0 ? "active" : ""}>
-          <a href="/">
+          <Link to="/">
             <svg
               width="27px"
               height="27px"
@@ -57,7 +57,7 @@ const Footer = () => {
                 </g>{" "}
               </g>
             </svg>
-          </a>
+          </Link>
         </li>
         <li tabIndex="1" className={currentTab === 1 ? "active" : ""}>
           <svg
@@ -103,7 +103,7 @@ const Footer = () => {
           </svg>
         </li>
         <li tabIndex="2" className={currentTab === 2 ? "active" : ""}>
-          <a href="/checkout">
+          <Link to="/checkout">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21"
@@ -122,7 +122,7 @@ const Footer = () => {
               <circle cx="11.75" cy="9.75" r="0.75" fill="#8F8F8F" />
               <circle cx="17.5" cy="5.5" r="2.75" fill="#FF9F24" stroke="white" strokeWidth="1.5" />
             </svg>
-          </a>
+          </Link>
         </li>
         <li tabIndex="3" className={currentTab === 3 ? "active" : ""}>
           <svg

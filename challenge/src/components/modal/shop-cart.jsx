@@ -4,6 +4,7 @@ import EditItemQuantityButton from "../button/edit-quantity-button";
 
 import "./shopcart.css";
 import { useCart } from "../../../provider/CartContext";
+import { Link } from "react-router-dom";
 
 const ShopCart = () => {
   const cartRef = useRef(null);
@@ -66,7 +67,7 @@ const ShopCart = () => {
                   <div className=" close-but">
                     <span onClick={() => handleRemoveFromCart(item.skus.code)}>x</span>
                   </div>
-                  <a
+                  <Link
                     href={`/${item?.id}-${item?.brand?.replace(/\s+/g, "-")}`}
                     onClick={toggleCart}
                     className="link-card"
@@ -79,7 +80,7 @@ const ShopCart = () => {
                       <span>{item.brand}</span>
                       <span>Medida: {item?.skus?.name}</span>
                     </div>
-                  </a>
+                  </Link>
                   <div className="price-section">
                     <div className="price-text">${item?.skus?.price}</div>
                     <div className="quantity-container">
@@ -101,9 +102,9 @@ const ShopCart = () => {
 
               <div className="tracking-widest">${totalCost.toFixed(2)}</div>
             </div>
-            <a href="/checkout" className="checkout">
+            <Link to="/checkout" className="checkout">
               Checkout
-            </a>
+            </Link>
           </div>
         </ul>
       </button>

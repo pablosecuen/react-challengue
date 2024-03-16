@@ -2,6 +2,7 @@
 import { toast } from "sonner";
 import "./details-footer.css";
 import { useCart } from "../../../provider/CartContext";
+import { Link } from "react-router-dom";
 const DetailsFooter = ({ selectedProduct }) => {
   const { addToCart } = useCart();
 
@@ -16,7 +17,7 @@ const DetailsFooter = ({ selectedProduct }) => {
 
   return (
     <div className="details-footer">
-      <a href="/checkout">
+      <Link to="/checkout">
         <button className="cart-icon">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,7 @@ const DetailsFooter = ({ selectedProduct }) => {
             <circle cx="13.75" cy="10.75" r="0.75" fill="#FF9F24" />
           </svg>
         </button>
-      </a>
+      </Link>
       <button className="cart-button" onClick={handleAddToCart}>
         Add to cart
       </button>

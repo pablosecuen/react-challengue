@@ -15,7 +15,7 @@ const Popular = ({ products }) => {
     <section className="popular-container">
       <div className="popular-title">
         <h3>Populer</h3>
-        <a href="/shop">See all</a>
+        <Link to="/shop">See all</Link>
       </div>
       <div className="popular-grid">
         {products?.map((product) => (

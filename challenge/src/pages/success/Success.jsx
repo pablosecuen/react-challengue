@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import html2canvas from "html2canvas";
 import Navbar from "../../components/navbar";
 import { useProductContext } from "../../../provider/Context";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./success.css";
 
 const Success = () => {
@@ -41,9 +41,9 @@ const Success = () => {
         <div className="success-inner">
           <div className="brand-info">
             <p className="brand-name">Beer e-Commerce</p>
-            <a href="https://react-challengue.vercel.app/" className="brand-link">
+            <Link to="https://react-challengue.vercel.app/" className="brand-link">
               react-challengue.vercel.app
-            </a>
+            </Link>
           </div>
           {paymentInfo ? (
             <div className="payment-details">

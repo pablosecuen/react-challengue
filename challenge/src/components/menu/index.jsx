@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./menu.css";
+import { Link } from "react-router-dom";
 const MenuModal = () => {
   const menuRef = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,13 +41,13 @@ const MenuModal = () => {
       <button id="menu-list" className={`menu-list ${isMenuOpen ? "animate-menu" : ""}`}>
         <ul className="menu-class">
           <li className="li-menu">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="li-menu">
-            <a to="/sign-up">Sign Up</a>
+            <Link to="/sign-up">Sign Up</Link>
           </li>
           <li className="li-menu">
-            <a to="/sign-in">Sign In</a>
+            <Link to="/sign-in">Sign In</Link>
           </li>
         </ul>
       </button>

@@ -6,6 +6,7 @@ import { Wallet } from "@mercadopago/sdk-react";
 import EditItemQuantityButton from "../../components/button/edit-quantity-button";
 import "./checkout.css";
 import { useProductContext } from "../../../provider/Context";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
   const { cart, removeFromCart } = useCart();
@@ -126,7 +127,7 @@ const Checkout = () => {
                     <div className=" close-but">
                       <span onClick={() => handleRemoveFromCart(item.skus.code)}>x</span>
                     </div>
-                    <a
+                    <Link
                       href={`/${item?.id}-${item?.brand?.replace(/\s+/g, "-")}`}
                       onClick={toggleCart}
                       className="link-card"
@@ -139,7 +140,7 @@ const Checkout = () => {
                         <span>{item.brand}</span>
                         <span>Medida: {item?.skus?.name}</span>
                       </div>
-                    </a>
+                    </Link>
                     <div className="price-section">
                       <div className="price-text">${item?.skus?.price}</div>
                       <div className="quantity-container">
