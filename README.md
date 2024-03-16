@@ -4,6 +4,15 @@
 
 Welcome to the Beer E-Commerce Challenge! In this project, i aim to build a functional e-commerce. Below, we'll provide an in-depth overview of the project structure, technologies used, and key features implemented.
 
+deployments url's
+
+No CORS has been applied for better supervision purposes.
+
+**Front end**: `https://react-challengue.vercel.app/`
+
+**Back end**: `https://react-challengue-production.up.railway.app`
+
+
 ---
 
 #### Project Structure
@@ -51,11 +60,11 @@ The project consists of two main parts: the backend API built with Express.js an
 
 5. **Global products endpoint**: New endpoint `/api/stock-price/list)` thats brings objets separately with a new individual data structure, not good for complex and larga databases, for confortable data structure for small e-commemrces.
 
-6. **PDP exlusive endpoint**:  `/api/stock-price/:code)` thats brings product details with a 5sec interval for updated information details. Great for having updated pricing information, stock information, and a balanced api calling.
+6. **PDP exlusive endpoint**:  `/api/stock-price/:code` thats brings product details with a 5sec interval for updated information details. Great for having updated pricing information, stock information, and a balanced api calling.
 
 7. **Payment Gateway Integration**: Integrated MercadoPago's payment gateway into the application, allowing users to make secure online payments for their purchases.
 
-8.**Seo Dinamic features JSON-LD**: added metadata to html, and a dynamic function GenerateMetada por details product page with a  JSON-LD structure and scripting to ensure html setting
+8. **Seo Dinamic features JSON-LD**: added metadata to html, and a dynamic function GenerateMetada por details product page with a  JSON-LD structure and scripting to ensure html setting
 
 9. **Webhook Controller**: Enables various actions such as invoking MercadoPago's IPN, retrieving complete payment information, and storing transaction details in the database for scalability and administration control.
 
@@ -103,6 +112,9 @@ Feel free to reach out with any questions, feedback, or suggestions. Happy codin
 
 Deployment of the api was performed in Railway
 Deployment of the front-end was performed in vercel
+
+
+
 
 Happy coding and thanks for stepping by
 
